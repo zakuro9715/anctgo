@@ -72,7 +72,6 @@ func parseTimetable(dec *xml.Decoder) (table Timetable, err error) {
 }
 
 func parseCommon(dec *xml.Decoder) (c Common, err error) {
-  fmt.Println("In common")
   var element string
   for {
     t, err := dec.Token()
@@ -103,7 +102,6 @@ func parseCommon(dec *xml.Decoder) (c Common, err error) {
 }
 
 func parseLectures(dec *xml.Decoder) (lecs []Lecture, err error) {
-  fmt.Println("In Lectures")
   var element string
   for {
     t, err := dec.Token()
@@ -133,7 +131,6 @@ func parseLectures(dec *xml.Decoder) (lecs []Lecture, err error) {
 }
 
 func parseLecture(dec *xml.Decoder) (lec Lecture, err error) {
-  fmt.Println("In Lecture")
   var element string
   for {
     t, err := dec.Token()
