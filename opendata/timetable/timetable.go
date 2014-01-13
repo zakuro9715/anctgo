@@ -37,3 +37,15 @@ const (
   MechanicalAndElectronic            = "機械・電子システム工学専攻"
   ArchitectureAndCivil               = "建築・都市システム工学専攻"
 )
+
+// 指定した週のTimetableを取り出す。
+// Note: このメソッドはO(n)である。n = len(t.Lectures)
+func (t *Timetable) OfWday(wday time.Weekday) (wt Timetable) {
+  wt.Common = t.Common
+  for _, l := range t.Lectures {
+    if l.Wday == wday {
+      wt.Lectures = append(wt.Lectures, l)
+    }
+  }
+  return
+}
