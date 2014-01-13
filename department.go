@@ -16,3 +16,21 @@ const (
   ME                                 = MechanicalAndElectronic
   AC                                 = ArchitectureAndCivil
 )
+
+func (d *Department) Initial() string {
+  switch *d {
+  case M:
+    return "M"
+  case E:
+    return "E"
+  case C:
+    return "C"
+  case A:
+    return "A"
+  case ME:
+    return "ME"
+  case AC:
+    return "AC"
+  }
+  return ""
+}
