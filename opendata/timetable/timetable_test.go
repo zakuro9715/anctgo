@@ -45,6 +45,48 @@ var ofWdayTests = []struct {
   },
 }
 
+var ofClassTests = []struct {
+  timetable, out Timetable
+  grade          int
+  dep            Department
+}{
+  {
+    timetable: Timetable{
+      Common{Institution: "ClassTest", Term: "前期", Year: 2013},
+      []Lecture{
+        Lecture{
+          Name:       "施設管理工学I",
+          Grade:      2,
+          Department: Civil,
+          Location:   "2C教室",
+          Wday:       time.Monday,
+        },
+        Lecture{
+          Name:       "データ構造とアルゴリズム",
+          Grade:      1,
+          Department: Electrical,
+          Location:   "1E教室",
+          Wday:       time.Tuesday,
+        },
+      },
+    },
+    out: Timetable{
+      Common{Institution: "ClassTest", Term: "前期", Year: 2013},
+      []Lecture{
+        Lecture{
+          Name:       "施設管理工学I",
+          Grade:      2,
+          Department: Civil,
+          Location:   "2C教室",
+          Wday:       time.Monday,
+        },
+      },
+    },
+    grade: 2,
+    dep:   Civil,
+  },
+}
+
 // テストに合格すればtrueを返す。
 // NOTE: 実際には、aとbが等しければtrueを返す。
 //       しかし、あくまでもテストに合格したかどうかを確認する目的で使うために作ったため、Equal関数ではない。
@@ -88,6 +130,15 @@ func isPassedTest(a, b Timetable) bool {
 func TestOfWday(t *testing.T) {
   for _, test := range ofWdayTests {
     out := test.timetable.OfWday(test.in)
+    if !isPassedTest(out, test.out) {
+      t.Error(out)
+    }
+  }
+}
+
+func TestOfClass(t *testing.T) {
+  for _, test := range ofClassTests {
+    out := test.timetable.OfClass(test.grade, test.dep)
     if !isPassedTest(out, test.out) {
       t.Error(out)
     }

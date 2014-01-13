@@ -49,3 +49,15 @@ func (t *Timetable) OfWday(wday time.Weekday) (wt Timetable) {
   }
   return
 }
+
+// 指定したクラスのTimetableを取り出す。
+// NOTE: このメソッドはO(n)である。 n = len(t.Lectures)
+func (t *Timetable) OfClass(grade int, dep Department) (wt Timetable) {
+  wt.Common = t.Common
+  for _, l := range t.Lectures {
+    if l.Grade == grade && l.Department == dep {
+      wt.Lectures = append(wt.Lectures, l)
+    }
+  }
+  return
+}
