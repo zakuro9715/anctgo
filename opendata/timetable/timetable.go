@@ -1,6 +1,7 @@
 package timetable
 
 import (
+  "../../../anctgo"
   "time"
 )
 
@@ -18,7 +19,7 @@ type Common struct {
 type Lecture struct {
   Name       string
   Grade      int
-  Department Department
+  Department anctgo.Department
   Wday       time.Weekday
   StartTime  time.Time
   EndTime    time.Time
@@ -26,17 +27,6 @@ type Lecture struct {
   Lecturers  []string
   URI        string
 }
-
-type Department string
-
-const (
-  Mechanical              Department = "機械工学科"
-  Electrical                         = "電気情報工学科"
-  Civil                              = "都市システム工学科"
-  Architecture                       = "建築学科"
-  MechanicalAndElectronic            = "機械・電子システム工学専攻"
-  ArchitectureAndCivil               = "建築・都市システム工学専攻"
-)
 
 // 指定した週のTimetableを取り出す。
 // Note: このメソッドはO(n)である。n = len(t.Lectures)
@@ -52,7 +42,7 @@ func (t *Timetable) OfWday(wday time.Weekday) (wt Timetable) {
 
 // 指定したクラスのTimetableを取り出す。
 // NOTE: このメソッドはO(n)である。 n = len(t.Lectures)
-func (t *Timetable) OfClass(grade int, dep Department) (wt Timetable) {
+func (t *Timetable) OfClass(grade int, dep anctgo.Department) (wt Timetable) {
   wt.Common = t.Common
   for _, l := range t.Lectures {
     if l.Grade == grade && l.Department == dep {

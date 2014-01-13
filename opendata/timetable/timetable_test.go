@@ -1,6 +1,7 @@
 package timetable
 
 import (
+  "../../../anctgo"
   "testing"
   "time"
 )
@@ -16,14 +17,14 @@ var ofWdayTests = []struct {
         Lecture{
           Name:       "施設管理工学I",
           Grade:      2,
-          Department: Civil,
+          Department: anctgo.Civil,
           Location:   "2C教室",
           Wday:       time.Monday,
         },
         Lecture{
           Name:       "データ構造とアルゴリズム",
           Grade:      2,
-          Department: Civil,
+          Department: anctgo.Civil,
           Location:   "2C教室",
           Wday:       time.Tuesday,
         },
@@ -35,7 +36,7 @@ var ofWdayTests = []struct {
         Lecture{
           Name:       "施設管理工学I",
           Grade:      2,
-          Department: Civil,
+          Department: anctgo.Civil,
           Location:   "2C教室",
           Wday:       time.Monday,
         },
@@ -48,7 +49,7 @@ var ofWdayTests = []struct {
 var ofClassTests = []struct {
   timetable, out Timetable
   grade          int
-  dep            Department
+  dep            anctgo.Department
 }{
   {
     timetable: Timetable{
@@ -57,14 +58,14 @@ var ofClassTests = []struct {
         Lecture{
           Name:       "施設管理工学I",
           Grade:      2,
-          Department: Civil,
+          Department: anctgo.Civil,
           Location:   "2C教室",
           Wday:       time.Monday,
         },
         Lecture{
           Name:       "データ構造とアルゴリズム",
           Grade:      1,
-          Department: Electrical,
+          Department: anctgo.Electrical,
           Location:   "1E教室",
           Wday:       time.Tuesday,
         },
@@ -76,14 +77,14 @@ var ofClassTests = []struct {
         Lecture{
           Name:       "施設管理工学I",
           Grade:      2,
-          Department: Civil,
+          Department: anctgo.Civil,
           Location:   "2C教室",
           Wday:       time.Monday,
         },
       },
     },
     grade: 2,
-    dep:   Civil,
+    dep:   anctgo.Civil,
   },
 }
 
