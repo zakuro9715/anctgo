@@ -1,7 +1,7 @@
 package timetable
 
 import (
-  "../../../anctgo"
+  "github.com/zakuro9715/anctgo"
   "time"
 )
 

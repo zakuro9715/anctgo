@@ -3,6 +3,7 @@ package timetable
 import (
   "encoding/xml"
   "fmt"
+  "github.com/zakuro9715/anctgo"
   "io"
   "net/http"
   "strconv"
@@ -161,7 +162,7 @@ func parseLecture(dec *xml.Decoder) (lec Lecture, err error) {
       case "Grade":
         lec.Grade, _ = strconv.Atoi(text)
       case "Department":
-        lec.Department = Department(text)
+        lec.Department = anctgo.Department(text)
       case "Wday":
         wdayI, _ := strconv.Atoi(text)
         lec.Wday = time.Weekday(wdayI)
